@@ -1,8 +1,145 @@
 @import 'abstracts/variables';
 
-.login {
-  width: 20rem;
-  height: 20rem;
-  background-color: $color-primary;
- 
+%itemNavegacionColor {
+  color: #fff;
+  transition: .15s all ease;
+}
+%itemNavegacion {
+  background-color: rgb(17, 97, 237);
+  height: 2px;
+  right: 0;
+  bottom: 2px;
+  border-radius: 0;
+  transition: .20s all ease;
+}
+/**
+* AQUI COMIENZA EL COMPONENTE
+* 
+*/
+.login {  
+  box-sizing: border-box;  
+  &__container {
+    display: block;
+    position: relative;
+    z-index: 0;
+    margin: 6rem auto 0;
+    padding: 10rem 8rem 0 8rem;
+    width: 100%;
+    max-width: 525px;
+    min-height: 680px;
+    background-image: url('../images/login3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 0 50px 70px -20px rgba(0, 0, 0, 0.85);
+
+    &::after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-image: radial-gradient(ellipse at left bottom, rgba(22, 24, 47, 0.624) 0%,rgba(38, 20, 72, 0.716) 59%, rgba(17, 27, 75, 0.829) 100%);
+	    box-shadow: 0 -20px 150px -20px rgba(0, 0, 0, 0.5);
+    }
+  }
+  .login__navigation--item + .login__navigation--item{
+    margin-left: 2.25rem;
+  }
+
+  &__navigation {
+    position: relative;
+    z-index: 1;
+    padding: 0;
+    margin: 0 0 6em 1rem;
+
+    &--item {
+      list-style: none;
+      display: inline-block;  
+
+      & + & {
+        margin-left: 2.25rem;
+      }
+      &.active a {
+        @extend %itemNavegacionColor;
+
+        &::after {
+          @extend %itemNavegacion;
+        }
+      }
+
+      & a {
+        position: relative;
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 2rem;
+        padding-bottom: .5rem;
+        transition: .20s all ease;
+
+        &:hover {
+          @extend %itemNavegacionColor;
+
+          &::after {
+            @extend %itemNavegacion
+          }
+        }        
+        &::after { 
+          content: '';
+          display: inline-block;
+          height: 10px;
+          background-color: rgb(255, 255, 255);
+          position: absolute;
+          right: 100%;
+          bottom: -1px;
+          left: 0;
+          border-radius: 50%;
+          transition: .15s all ease;
+        }
+      }
+    }
+  }
+  &__form {
+    position: relative;
+    z-index: 1;
+    padding-bottom: 4.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  }
+
+  &__submit {
+    color: #fff;
+    font-size: 1.5rem;
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1.5rem;
+    padding: .9rem;
+    border-radius: 2.5rem;
+    display: block;
+    width: 100%;
+    background-color: rgba(17, 97, 237, .75);
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(17, 97, 237, 1);
+    }
+  }
+
+  &__forgot {
+    display: block;
+    margin-top: 3rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.2rem;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    &:hover {
+      color: rgb(17, 97, 237);
+    }
+  }
 }
